@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">SpringBoot基础 | 福尔摩东的blog</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "福尔摩东的blog";
+  mashiro_option.author_name = "福尔摩东的blog";
+  mashiro_option.site_url = "https://zzdnb.github.io/";
+  mashiro_option.v_appId = "W4o54nMXiANuTNwy7G0UBHja-gzGzoHsz";
+  mashiro_option.v_appKey = "Bxf32o0QPRCCLpYORLCpYwd7";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://zzdnb.github.io/">
+          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>Live your life with passion! With some drive!</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/zzdnb" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/297247087" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono"></span>
+            <span class="shironeko">福尔摩东的blog</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/资源/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/随想/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/转载/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/悦读/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/图集/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      SpringBoot基础</h1>
+      <p class="entry-census">
+        <span>
+          <a href="hojun.cn">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="hojun.cn">福尔摩东</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-5-15<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="SpringBoot基础"><a href="#SpringBoot基础" class="headerlink" title="SpringBoot基础"></a>SpringBoot基础</h1><h2 id="学习目标："><a href="#学习目标：" class="headerlink" title="学习目标："></a>学习目标：</h2><ol>
+<li>能够理解Spring的优缺点</li>
+<li>能够理解SpringBoot的特点</li>
+<li>能够理解SpringBoot的核心功能</li>
+<li>能够搭建SpringBoot的环境</li>
+<li>能够完成application.properties配置文件的配置</li>
+<li>能够完成application.yml配置文件的配置</li>
+<li>能够使用SpringBoot集成Mybatis</li>
+<li>能够使用SpringBoot集成Junit</li>
+<li>能够使用SpringBoot集成SpringData JPA</li>
+</ol>
+<h1 id="一、SpringBoot简介"><a href="#一、SpringBoot简介" class="headerlink" title="一、SpringBoot简介"></a>一、SpringBoot简介</h1><h2 id="1-1-原有Spring优缺点分析"><a href="#1-1-原有Spring优缺点分析" class="headerlink" title="1.1  原有Spring优缺点分析"></a>1.1  原有Spring优缺点分析</h2><h3 id="1-1-1-Spring的优点分析"><a href="#1-1-1-Spring的优点分析" class="headerlink" title="1.1.1 Spring的优点分析"></a>1.1.1 Spring的优点分析</h3><p>Spring是Java企业版（Java Enterprise Edition，JEE，也称J2EE）的轻量级代替品。无需开发重量级的Enterprise JavaBean（EJB），Spring为企业级Java开发提供了一种相对简单的方法，通过依赖注入和面向切面编程，用简单的Java对象（Plain Old Java Object，POJO）实现了EJB的功能。</p>
+<h3 id="1-1-2-Spring的缺点分析"><a href="#1-1-2-Spring的缺点分析" class="headerlink" title="1.1.2 Spring的缺点分析"></a>1.1.2 Spring的缺点分析</h3><p>虽然Spring的组件代码是轻量级的，但它的配置却是重量级的。一开始，Spring用XML配置，而且是很多XML配置。Spring 2.5引入了基于注解的组件扫描，这消除了大量针对应用程序自身组件的显式XML配置。Spring 3.0引入了基于Java的配置，这是一种类型安全的可重构配置方式，可以代替XML。</p>
+<p>所有这些配置都代表了开发时的损耗。因为在思考Spring特性配置和解决业务问题之间需要进行思维切换，所以编写配置挤占了编写应用程序逻辑的时间。和所有框架一样，Spring实用，但与此同时它要求的回报也不少。</p>
+<p>除此之外，项目的依赖管理也是一件耗时耗力的事情。在环境搭建时，需要分析要导入哪些库的坐标，而且还需要分析导入与之有依赖关系的其他库的坐标，一旦选错了依赖的版本，随之而来的不兼容问题就会严重阻碍项目的开发进度。</p>
+<h2 id="1-2-SpringBoot的概述"><a href="#1-2-SpringBoot的概述" class="headerlink" title="1.2 SpringBoot的概述"></a>1.2 SpringBoot的概述</h2><h3 id="1-2-1-SpringBoot解决上述Spring的缺点"><a href="#1-2-1-SpringBoot解决上述Spring的缺点" class="headerlink" title="1.2.1 SpringBoot解决上述Spring的缺点"></a>1.2.1 SpringBoot解决上述Spring的缺点</h3><p>SpringBoot对上述Spring的缺点进行的改善和优化，基于约定优于配置的思想，可以让开发人员不必在配置与逻辑业务之间进行思维的切换，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率，一定程度上缩短了项目周期。</p>
+<h3 id="1-2-2-SpringBoot的特点"><a href="#1-2-2-SpringBoot的特点" class="headerlink" title="1.2.2 SpringBoot的特点"></a>1.2.2 SpringBoot的特点</h3><ul>
+<li>为基于Spring的开发提供更快的入门体验</li>
+<li>开箱即用，没有代码生成，也无需XML配置。同时也可以修改默认值来满足特定的需求</li>
+<li>提供了一些大型项目中常见的非功能性特性，如嵌入式服务器、安全、指标，健康检测、外部配置等</li>
+<li>SpringBoot不是对Spring功能上的增强，而是提供了一种快速使用Spring的方式</li>
+</ul>
+<h3 id="1-2-3-SpringBoot的核心功能"><a href="#1-2-3-SpringBoot的核心功能" class="headerlink" title="1.2.3 SpringBoot的核心功能"></a>1.2.3 SpringBoot的核心功能</h3><ul>
+<li><p>起步依赖</p>
+<p>起步依赖本质上是一个Maven项目对象模型（Project Object Model，POM），定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。</p>
+<p>简单的说，起步依赖就是将具备某种功能的坐标打包到一起，并提供一些默认的功能。</p>
+</li>
+<li><p>自动配置</p>
+<p>Spring Boot的自动配置是一个运行时（更准确地说，是应用程序启动时）的过程，考虑了众多因素，才决定Spring配置应该用哪个，不该用哪个。该过程是Spring自动完成的。</p>
+</li>
+</ul>
+<p>​    注意：起步依赖和自动配置的原理剖析会在第三章《SpringBoot原理分析》进行详细讲解</p>
+<h1 id="二、SpringBoot快速入门"><a href="#二、SpringBoot快速入门" class="headerlink" title="二、SpringBoot快速入门"></a>二、SpringBoot快速入门</h1><h2 id="2-1-代码实现"><a href="#2-1-代码实现" class="headerlink" title="2.1 代码实现"></a>2.1 代码实现</h2><h3 id="2-1-1-创建Maven工程"><a href="#2-1-1-创建Maven工程" class="headerlink" title="2.1.1 创建Maven工程"></a>2.1.1 创建Maven工程</h3><p>使用idea工具创建一个maven工程，该工程为普通的java工程即可</p>
+<p><img src="img\1.png" alt></p>
+<p><img src="img\2.png" alt></p>
+<p><img src="img\3.png" alt></p>
+<p><img src="img\4.png" alt></p>
+<h3 id="2-1-2-添加SpringBoot的起步依赖"><a href="#2-1-2-添加SpringBoot的起步依赖" class="headerlink" title="2.1.2 添加SpringBoot的起步依赖"></a>2.1.2 添加SpringBoot的起步依赖</h3><p>SpringBoot要求，项目要继承SpringBoot的起步依赖spring-boot-starter-parent</p>
+<pre><code class="xml">&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre>
+<p>SpringBoot要集成SpringMVC进行Controller的开发，所以项目要导入web的启动依赖</p>
+<pre><code class="xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h3 id="2-1-3-编写SpringBoot引导类"><a href="#2-1-3-编写SpringBoot引导类" class="headerlink" title="2.1.3 编写SpringBoot引导类"></a>2.1.3 编写SpringBoot引导类</h3><p>要通过SpringBoot提供的引导类起步SpringBoot才可以进行访问</p>
+<pre><code class="java">package com.itheima;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MySpringBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringBootApplication.class);
+    }
+
+}
+</code></pre>
+<h3 id="2-1-4-编写Controller"><a href="#2-1-4-编写Controller" class="headerlink" title="2.1.4 编写Controller"></a>2.1.4 编写Controller</h3><p>在引导类MySpringBootApplication同级包或者子级包中创建QuickStartController</p>
+<pre><code class="java">package com.itheima.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class QuickStartController {
+
+    @RequestMapping(&quot;/quick&quot;)
+    @ResponseBody
+    public String quick(){
+        return &quot;springboot 访问成功!&quot;;
+    }
+
+}
+</code></pre>
+<h3 id="2-1-5-测试"><a href="#2-1-5-测试" class="headerlink" title="2.1.5 测试"></a>2.1.5 测试</h3><p>执行SpringBoot起步类的主方法，控制台打印日志如下：</p>
+<pre><code>.   ____          _            __ _ _
+ /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.1.RELEASE)
+
+2018-05-08 14:29:59.714  INFO 5672 --- [           main] com.itheima.MySpringBootApplication      : Starting MySpringBootApplication on DESKTOP-RRUNFUH with PID 5672 (C:\Users\muzimoo\IdeaProjects\IdeaTest\springboot_quick\target\classes started by muzimoo in C:\Users\muzimoo\IdeaProjects\IdeaTest)
+... ... ...
+o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-08 14:30:03.126  INFO 5672 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-05-08 14:30:03.196  INFO 5672 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path &#39;&#39;
+2018-05-08 14:30:03.206  INFO 5672 --- [           main] com.itheima.MySpringBootApplication      : Started MySpringBootApplication in 4.252 seconds (JVM running for 5.583)
+</code></pre><p>通过日志发现，Tomcat started on port(s): 8080 (http) with context path ‘’</p>
+<p>tomcat已经起步，端口监听8080，web应用的虚拟工程名称为空</p>
+<p>打开浏览器访问url地址为：<a href="http://localhost:8080/quick" target="_blank" rel="noopener">http://localhost:8080/quick</a></p>
+<p><img src="img\5.png" alt></p>
+<h2 id="2-2-快速入门解析"><a href="#2-2-快速入门解析" class="headerlink" title="2.2 快速入门解析"></a>2.2 快速入门解析</h2><h3 id="2-2-2-SpringBoot代码解析"><a href="#2-2-2-SpringBoot代码解析" class="headerlink" title="2.2.2 SpringBoot代码解析"></a>2.2.2 SpringBoot代码解析</h3><ul>
+<li>@SpringBootApplication：标注SpringBoot的启动类，该注解具备多种功能（后面详细剖析）</li>
+<li>SpringApplication.run(MySpringBootApplication.class) 代表运行SpringBoot的启动类，参数为SpringBoot启动类的字节码对象</li>
+</ul>
+<h3 id="2-2-3-SpringBoot工程热部署"><a href="#2-2-3-SpringBoot工程热部署" class="headerlink" title="2.2.3 SpringBoot工程热部署"></a>2.2.3 SpringBoot工程热部署</h3><p>我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动才生效，这样每次启动都很麻烦，浪费了大量的时间，我们可以在修改代码后不重启就能生效，在 pom.xml 中添加如下配置就可以实现这样的功能，我们称之为热部署。</p>
+<pre><code class="xml">&lt;!--热部署配置--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>注意：IDEA进行SpringBoot热部署失败原因</p>
+<p>出现这种情况，并不是热部署配置问题，其根本原因是因为Intellij IEDA默认情况下不会自动编译，需要对IDEA进行自动编译的设置，如下：</p>
+<p><img src="img\19.png" alt></p>
+<p>然后 Shift+Ctrl+Alt+/，选择Registry</p>
+<p><img src="img\20.png" alt></p>
+<h3 id="2-2-4-使用idea快速创建SpringBoot项目"><a href="#2-2-4-使用idea快速创建SpringBoot项目" class="headerlink" title="2.2.4 使用idea快速创建SpringBoot项目"></a>2.2.4 使用idea快速创建SpringBoot项目</h3><p><img src="img\6.png" alt></p>
+<p><img src="img\7.png" alt></p>
+<p><img src="img\8.png" alt></p>
+<p><img src="img\9.png" alt></p>
+<p><img src="img\10.png" alt></p>
+<p>通过idea快速创建的SpringBoot项目的pom.xml中已经导入了我们选择的web的起步依赖的坐标</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.itheima&lt;/groupId&gt;
+    &lt;artifactId&gt;springboot_quick2&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;name&gt;springboot_quick2&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+        &lt;java.version&gt;9&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+
+&lt;/project&gt;
+
+</code></pre>
+<p>可以使用快速入门的方式创建Controller进行访问，此处不再赘述</p>
+<h1 id="三、SpringBoot原理分析"><a href="#三、SpringBoot原理分析" class="headerlink" title="三、SpringBoot原理分析"></a>三、SpringBoot原理分析</h1><h2 id="3-1-起步依赖原理分析"><a href="#3-1-起步依赖原理分析" class="headerlink" title="3.1 起步依赖原理分析"></a>3.1 起步依赖原理分析</h2><h3 id="3-1-1-分析spring-boot-starter-parent"><a href="#3-1-1-分析spring-boot-starter-parent" class="headerlink" title="3.1.1 分析spring-boot-starter-parent"></a>3.1.1 分析spring-boot-starter-parent</h3><p>按住Ctrl点击pom.xml中的spring-boot-starter-parent，跳转到了spring-boot-starter-parent的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
+<pre><code class="xml">&lt;parent&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+  &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+  &lt;relativePath&gt;../../spring-boot-dependencies&lt;/relativePath&gt;
+&lt;/parent&gt;
+</code></pre>
+<p>按住Ctrl点击pom.xml中的spring-boot-starter-dependencies，跳转到了spring-boot-starter-dependencies的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
+<pre><code class="xml">&lt;properties&gt;
+      &lt;activemq.version&gt;5.15.3&lt;/activemq.version&gt;
+      &lt;antlr2.version&gt;2.7.7&lt;/antlr2.version&gt;
+      &lt;appengine-sdk.version&gt;1.9.63&lt;/appengine-sdk.version&gt;
+      &lt;artemis.version&gt;2.4.0&lt;/artemis.version&gt;
+      &lt;aspectj.version&gt;1.8.13&lt;/aspectj.version&gt;
+      &lt;assertj.version&gt;3.9.1&lt;/assertj.version&gt;
+      &lt;atomikos.version&gt;4.0.6&lt;/atomikos.version&gt;
+      &lt;bitronix.version&gt;2.1.4&lt;/bitronix.version&gt;
+      &lt;build-helper-maven-plugin.version&gt;3.0.0&lt;/build-helper-maven-plugin.version&gt;
+      &lt;byte-buddy.version&gt;1.7.11&lt;/byte-buddy.version&gt;
+      ... ... ...
+&lt;/properties&gt;
+&lt;dependencyManagement&gt;
+      &lt;dependencies&gt;
+          &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot&lt;/artifactId&gt;
+            &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+          &lt;/dependency&gt;
+          &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-test&lt;/artifactId&gt;
+            &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+          &lt;/dependency&gt;
+          ... ... ...
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+&lt;build&gt;
+      &lt;pluginManagement&gt;
+        &lt;plugins&gt;
+              &lt;plugin&gt;
+                &lt;groupId&gt;org.jetbrains.kotlin&lt;/groupId&gt;
+                &lt;artifactId&gt;kotlin-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;${kotlin.version}&lt;/version&gt;
+              &lt;/plugin&gt;
+              &lt;plugin&gt;
+                &lt;groupId&gt;org.jooq&lt;/groupId&gt;
+                &lt;artifactId&gt;jooq-codegen-maven&lt;/artifactId&gt;
+                &lt;version&gt;${jooq.version}&lt;/version&gt;
+              &lt;/plugin&gt;
+              &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+              &lt;/plugin&gt;
+              ... ... ...
+        &lt;/plugins&gt;
+      &lt;/pluginManagement&gt;
+&lt;/build&gt;
+</code></pre>
+<p>从上面的spring-boot-starter-dependencies的pom.xml中我们可以发现，一部分坐标的版本、依赖管理、插件管理已经定义好，所以我们的SpringBoot工程继承spring-boot-starter-parent后已经具备版本锁定等配置了。所以起步依赖的作用就是进行依赖的传递。</p>
+<h3 id="3-1-2-分析spring-boot-starter-web"><a href="#3-1-2-分析spring-boot-starter-web" class="headerlink" title="3.1.2 分析spring-boot-starter-web"></a>3.1.2 分析spring-boot-starter-web</h3><p>按住Ctrl点击pom.xml中的spring-boot-starter-web，跳转到了spring-boot-starter-web的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+      &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+      &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starters&lt;/artifactId&gt;
+        &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+      &lt;/parent&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+      &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+      &lt;name&gt;Spring Boot Web Starter&lt;/name&gt;
+
+      &lt;dependencies&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+              &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-json&lt;/artifactId&gt;
+              &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+              &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.hibernate.validator&lt;/groupId&gt;
+              &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;
+              &lt;version&gt;6.0.9.Final&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+              &lt;version&gt;5.0.5.RELEASE&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+              &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+              &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+              &lt;version&gt;5.0.5.RELEASE&lt;/version&gt;
+              &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+      &lt;/dependencies&gt;
+&lt;/project&gt;
+
+</code></pre>
+<p>从上面的spring-boot-starter-web的pom.xml中我们可以发现，spring-boot-starter-web就是将web开发要使用的spring-web、spring-webmvc等坐标进行了“打包”，这样我们的工程只要引入spring-boot-starter-web起步依赖的坐标就可以进行web开发了，同样体现了依赖传递的作用。</p>
+<h2 id="3-2-自动配置原理解析"><a href="#3-2-自动配置原理解析" class="headerlink" title="3.2 自动配置原理解析"></a>3.2 自动配置原理解析</h2><p>按住Ctrl点击查看启动类MySpringBootApplication上的注解@SpringBootApplication</p>
+<pre><code class="java">@SpringBootApplication
+public class MySpringBootApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringBootApplication.class);
+    }
+}
+</code></pre>
+<p>注解@SpringBootApplication的源码</p>
+<pre><code class="java">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = {
+        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication {
+
+    /**
+     * Exclude specific auto-configuration classes such that they will never be applied.
+     * @return the classes to exclude
+     */
+    @AliasFor(annotation = EnableAutoConfiguration.class)
+    Class&lt;?&gt;[] exclude() default {};
+
+    ... ... ...
+
+}
+</code></pre>
+<p>其中，</p>
+<p>@SpringBootConfiguration：等同与@Configuration，既标注该类是Spring的一个配置类</p>
+<p>@EnableAutoConfiguration：SpringBoot自动配置功能开启</p>
+<p>按住Ctrl点击查看注解@EnableAutoConfiguration</p>
+<pre><code class="java">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import(AutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration {
+    ... ... ...
+}
+</code></pre>
+<p>其中，@Import(AutoConfigurationImportSelector.class) 导入了AutoConfigurationImportSelector类</p>
+<p>按住Ctrl点击查看AutoConfigurationImportSelector源码</p>
+<pre><code class="java">public String[] selectImports(AnnotationMetadata annotationMetadata) {
+        ... ... ...
+        List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,
+                                                                   attributes);
+        configurations = removeDuplicates(configurations);
+        Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);
+        checkExcludedClasses(configurations, exclusions);
+        configurations.removeAll(exclusions);
+        configurations = filter(configurations, autoConfigurationMetadata);
+        fireAutoConfigurationImportEvents(configurations, exclusions);
+        return StringUtils.toStringArray(configurations);
+}
+
+
+protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata,
+            AnnotationAttributes attributes) {
+        List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(
+                getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());
+
+        return configurations;
+}
+
+</code></pre>
+<p>其中，SpringFactoriesLoader.loadFactoryNames 方法的作用就是从META-INF/spring.factories文件中读取指定类对应的类名称列表 </p>
+<p><img src="img\11.png" alt></p>
+<p>spring.factories 文件中有关自动配置的配置信息如下：</p>
+<pre><code>... ... ...
+
+org.springframework.boot.autoconfigure.web.reactive.function.client.WebClientAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration,\
+
+... ... ...
+</code></pre><p>上面配置文件存在大量的以Configuration为结尾的类名称，这些类就是存有自动配置信息的类，而SpringApplication在获取这些类名后再加载</p>
+<p>我们以ServletWebServerFactoryAutoConfiguration为例来分析源码：</p>
+<pre><code class="java">@Configuration
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
+@ConditionalOnClass(ServletRequest.class)
+@ConditionalOnWebApplication(type = Type.SERVLET)
+@EnableConfigurationProperties(ServerProperties.class)
+@Import({ ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class,
+        ServletWebServerFactoryConfiguration.EmbeddedTomcat.class,
+        ServletWebServerFactoryConfiguration.EmbeddedJetty.class,
+        ServletWebServerFactoryConfiguration.EmbeddedUndertow.class })
+public class ServletWebServerFactoryAutoConfiguration {
+    ... ... ...
+}
+
+</code></pre>
+<p>其中，</p>
+<p>@EnableConfigurationProperties(ServerProperties.class) 代表加载ServerProperties服务器配置属性类</p>
+<p>进入ServerProperties.class源码如下：</p>
+<pre><code class="java">@ConfigurationProperties(prefix = &quot;server&quot;, ignoreUnknownFields = true)
+public class ServerProperties {
+
+    /**
+     * Server HTTP port.
+     */
+    private Integer port;
+
+    /**
+     * Network address to which the server should bind.
+     */
+    private InetAddress address;
+
+      ... ... ...
+
+}
+</code></pre>
+<p>其中，</p>
+<p>prefix = “server” 表示SpringBoot配置文件中的前缀，SpringBoot会将配置文件中以server开始的属性映射到该类的字段中。映射关系如下：</p>
+<p><img src="img\12.png" alt></p>
+<h1 id="四、SpringBoot的配置文件"><a href="#四、SpringBoot的配置文件" class="headerlink" title="四、SpringBoot的配置文件"></a>四、SpringBoot的配置文件</h1><h2 id="4-1-SpringBoot配置文件类型"><a href="#4-1-SpringBoot配置文件类型" class="headerlink" title="4.1 SpringBoot配置文件类型"></a>4.1 SpringBoot配置文件类型</h2><h3 id="4-1-1-SpringBoot配置文件类型和作用"><a href="#4-1-1-SpringBoot配置文件类型和作用" class="headerlink" title="4.1.1 SpringBoot配置文件类型和作用"></a>4.1.1 SpringBoot配置文件类型和作用</h3><p>SpringBoot是基于约定的，所以很多配置都有默认值，但如果想使用自己的配置替换默认配置的话，就可以使用application.properties或者application.yml（application.yaml）进行配置。</p>
+<p>SpringBoot默认会从Resources目录下加载application.properties或application.yml（application.yaml）文件</p>
+<p>其中，application.properties文件是键值对类型的文件，之前一直在使用，所以此处不在对properties文件的格式进行阐述。除了properties文件外，SpringBoot还可以使用yml文件进行配置，下面对yml文件进行讲解。</p>
+<h3 id="4-1-2-application-yml配置文件"><a href="#4-1-2-application-yml配置文件" class="headerlink" title="4.1.2 application.yml配置文件"></a>4.1.2 application.yml配置文件</h3><h4 id="4-1-2-1-yml配置文件简介"><a href="#4-1-2-1-yml配置文件简介" class="headerlink" title="4.1.2.1 yml配置文件简介"></a>4.1.2.1 yml配置文件简介</h4><p>YML文件格式是YAML (YAML Aint Markup Language)编写的文件格式，YAML是一种直观的能够被电脑识别的的数据数据序列化格式，并且容易被人类阅读，容易和脚本语言交互的，可以被支持YAML库的不同的编程语言程序导入，比如： C/C++, Ruby, Python, Java, Perl, C#, PHP等。YML文件是以数据为核心的，比传统的xml方式更加简洁。</p>
+<p>YML文件的扩展名可以使用.yml或者.yaml。</p>
+<h4 id="4-1-2-2-yml配置文件的语法"><a href="#4-1-2-2-yml配置文件的语法" class="headerlink" title="4.1.2.2 yml配置文件的语法"></a>4.1.2.2 yml配置文件的语法</h4><h5 id="4-1-2-2-1-配置普通数据"><a href="#4-1-2-2-1-配置普通数据" class="headerlink" title="4.1.2.2.1 配置普通数据"></a>4.1.2.2.1 配置普通数据</h5><ul>
+<li><p>语法： key: value</p>
+</li>
+<li><p>示例代码：</p>
+</li>
+<li><pre><code class="yaml">name: haohao
+</code></pre>
+</li>
+<li><p>注意：value之前有一个空格</p>
+</li>
+</ul>
+<h5 id="4-1-2-2-2-配置对象数据"><a href="#4-1-2-2-2-配置对象数据" class="headerlink" title="4.1.2.2.2 配置对象数据"></a>4.1.2.2.2 配置对象数据</h5><ul>
+<li><p>语法： </p>
+<p>​    key: </p>
+<p>​        key1: value1</p>
+<p>​        key2: value2</p>
+<p>​    或者：</p>
+<p>​    key: {key1: value1,key2: value2}</p>
+</li>
+<li><p>示例代码：</p>
+</li>
+<li><pre><code class="yaml">person:
+  name: haohao
+  age: 31
+  addr: beijing
+
+#或者
+
+person: {name: haohao,age: 31,addr: beijing}
+</code></pre>
+</li>
+<li><p>注意：key1前面的空格个数不限定，在yml语法中，相同缩进代表同一个级别</p>
+</li>
+</ul>
+<h5 id="4-1-2-2-2-配置Map数据"><a href="#4-1-2-2-2-配置Map数据" class="headerlink" title="4.1.2.2.2 配置Map数据"></a>4.1.2.2.2 配置Map数据</h5><p>同上面的对象写法</p>
+<h5 id="4-1-2-2-3-配置数组（List、Set）数据"><a href="#4-1-2-2-3-配置数组（List、Set）数据" class="headerlink" title="4.1.2.2.3 配置数组（List、Set）数据"></a>4.1.2.2.3 配置数组（List、Set）数据</h5><ul>
+<li><p>语法： </p>
+<p>​    key: </p>
+<p>​        - value1</p>
+<p>​        - value2</p>
+<p>或者：</p>
+<p>​    key: [value1,value2]</p>
+</li>
+<li><p>示例代码：</p>
+</li>
+<li><pre><code class="yaml">city:
+  - beijing
+  - tianjin
+  - shanghai
+  - chongqing
+
+#或者
+
+city: [beijing,tianjin,shanghai,chongqing]
+
+#集合中的元素是对象形式
+student:
+  - name: zhangsan
+    age: 18
+    score: 100
+  - name: lisi
+    age: 28
+    score: 88
+  - name: wangwu
+    age: 38
+    score: 90
+</code></pre>
+</li>
+<li><p>注意：value1与之间的 - 之间存在一个空格</p>
+</li>
+</ul>
+<h3 id="4-1-3-SpringBoot配置信息的查询"><a href="#4-1-3-SpringBoot配置信息的查询" class="headerlink" title="4.1.3 SpringBoot配置信息的查询"></a>4.1.3 SpringBoot配置信息的查询</h3><p>上面提及过，SpringBoot的配置文件，主要的目的就是对配置信息进行修改的，但在配置时的key从哪里去查询呢？我们可以查阅SpringBoot的官方文档</p>
+<p>文档URL：<a href="https://docs.spring.io/spring-boot/docs/2.0.1.RELEASE/reference/htmlsingle/#common-application-properties" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.0.1.RELEASE/reference/htmlsingle/#common-application-properties</a></p>
+<p>常用的配置摘抄如下：</p>
+<pre><code class="properties"># QUARTZ SCHEDULER (QuartzProperties)
+spring.quartz.jdbc.initialize-schema=embedded # Database schema initialization mode.
+spring.quartz.jdbc.schema=classpath:org/quartz/impl/jdbcjobstore/tables_@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+spring.quartz.job-store-type=memory # Quartz job store type.
+spring.quartz.properties.*= # Additional Quartz Scheduler properties.
+
+# ----------------------------------------
+# WEB PROPERTIES
+# ----------------------------------------
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server.port=8080 # Server HTTP port.
+server.servlet.context-path= # Context path of the application.
+server.servlet.path=/ # Path of the main dispatcher servlet.
+
+# HTTP encoding (HttpEncodingProperties)
+spring.http.encoding.charset=UTF-8 # Charset of HTTP requests and responses. Added to the &quot;Content-Type&quot; header if not set explicitly.
+
+# JACKSON (JacksonProperties)
+spring.jackson.date-format= # Date format string or a fully-qualified date format class name. For instance, `yyyy-MM-dd HH:mm:ss`.
+
+# SPRING MVC (WebMvcProperties)
+spring.mvc.servlet.load-on-startup=-1 # Load on startup priority of the dispatcher servlet.
+spring.mvc.static-path-pattern=/** # Path pattern used for static resources.
+spring.mvc.view.prefix= # Spring MVC view prefix.
+spring.mvc.view.suffix= # Spring MVC view suffix.
+
+# DATASOURCE (DataSourceAutoConfiguration &amp; DataSourceProperties)
+spring.datasource.driver-class-name= # Fully qualified name of the JDBC driver. Auto-detected based on the URL by default.
+spring.datasource.password= # Login password of the database.
+spring.datasource.url= # JDBC URL of the database.
+spring.datasource.username= # Login username of the database.
+
+# JEST (Elasticsearch HTTP client) (JestProperties)
+spring.elasticsearch.jest.password= # Login password.
+spring.elasticsearch.jest.proxy.host= # Proxy host the HTTP client should use.
+spring.elasticsearch.jest.proxy.port= # Proxy port the HTTP client should use.
+spring.elasticsearch.jest.read-timeout=3s # Read timeout.
+spring.elasticsearch.jest.username= # Login username.
+
+</code></pre>
+<p>我们可以通过配置application.poperties 或者 application.yml 来修改SpringBoot的默认配置</p>
+<p>例如：</p>
+<p>application.properties文件</p>
+<pre><code class="properties">server.port=8888
+server.servlet.context-path=demo
+</code></pre>
+<p>application.yml文件</p>
+<pre><code class="yaml">server:
+  port: 8888
+  servlet:
+    context-path: /demo
+</code></pre>
+<h2 id="4-2-配置文件与配置类的属性映射方式"><a href="#4-2-配置文件与配置类的属性映射方式" class="headerlink" title="4.2 配置文件与配置类的属性映射方式"></a>4.2 配置文件与配置类的属性映射方式</h2><h3 id="4-2-1-使用注解-Value映射"><a href="#4-2-1-使用注解-Value映射" class="headerlink" title="4.2.1 使用注解@Value映射"></a>4.2.1 使用注解@Value映射</h3><p>我们可以通过@Value注解将配置文件中的值映射到一个Spring管理的Bean的字段上</p>
+<p>例如：</p>
+<p>application.properties配置如下：</p>
+<pre><code class="properties">person:
+  name: zhangsan
+  age: 18
+</code></pre>
+<p>或者，application.yml配置如下：</p>
+<pre><code class="yaml">person:
+  name: zhangsan
+  age: 18
+</code></pre>
+<p>实体Bean代码如下：</p>
+<pre><code class="java">@Controller
+public class QuickStartController {
+
+    @Value(&quot;${person.name}&quot;)
+    private String name;
+    @Value(&quot;${person.age}&quot;)
+    private Integer age;
+
+
+    @RequestMapping(&quot;/quick&quot;)
+    @ResponseBody
+    public String quick(){
+        return &quot;springboot 访问成功! name=&quot;+name+&quot;,age=&quot;+age;
+    }
+
+}
+</code></pre>
+<p>浏览器访问地址：<a href="http://localhost:8080/quick" target="_blank" rel="noopener">http://localhost:8080/quick</a> 结果如下：</p>
+<p><img src="img\13.png" alt></p>
+<h3 id="4-2-2-使用注解-ConfigurationProperties映射"><a href="#4-2-2-使用注解-ConfigurationProperties映射" class="headerlink" title="4.2.2 使用注解@ConfigurationProperties映射"></a>4.2.2 使用注解@ConfigurationProperties映射</h3><p>通过注解@ConfigurationProperties(prefix=”配置文件中的key的前缀”)可以将配置文件中的配置自动与实体进行映射</p>
+<p>application.properties配置如下：</p>
+<pre><code class="properties">person:
+  name: zhangsan
+  age: 18
+</code></pre>
+<p>或者，application.yml配置如下：</p>
+<pre><code class="yaml">person:
+  name: zhangsan
+  age: 18
+</code></pre>
+<p>实体Bean代码如下：</p>
+<pre><code class="java">@Controller
+@ConfigurationProperties(prefix = &quot;person&quot;)
+public class QuickStartController {
+
+    private String name;
+    private Integer age;
+
+    @RequestMapping(&quot;/quick&quot;)
+    @ResponseBody
+    public String quick(){
+        return &quot;springboot 访问成功! name=&quot;+name+&quot;,age=&quot;+age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}
+</code></pre>
+<p>浏览器访问地址：<a href="http://localhost:8080/quick" target="_blank" rel="noopener">http://localhost:8080/quick</a> 结果如下：</p>
+<p><img src="img\13.png" alt></p>
+<p>注意：使用@ConfigurationProperties方式可以进行配置文件与实体字段的自动映射，但需要字段必须提供set方法才可以，而使用@Value注解修饰的字段不需要提供set方法</p>
+<h1 id="五、SpringBoot与整合其他技术"><a href="#五、SpringBoot与整合其他技术" class="headerlink" title="五、SpringBoot与整合其他技术"></a>五、SpringBoot与整合其他技术</h1><h2 id="5-1-SpringBoot整合Mybatis"><a href="#5-1-SpringBoot整合Mybatis" class="headerlink" title="5.1 SpringBoot整合Mybatis"></a>5.1 SpringBoot整合Mybatis</h2><h3 id="5-1-1-添加Mybatis的起步依赖"><a href="#5-1-1-添加Mybatis的起步依赖" class="headerlink" title="5.1.1 添加Mybatis的起步依赖"></a>5.1.1 添加Mybatis的起步依赖</h3><pre><code class="xml">&lt;!--mybatis起步依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;1.1.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-1-2-添加数据库驱动坐标"><a href="#5-1-2-添加数据库驱动坐标" class="headerlink" title="5.1.2 添加数据库驱动坐标"></a>5.1.2 添加数据库驱动坐标</h3><pre><code class="xml">&lt;!-- MySQL连接驱动 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-1-3-添加数据库连接信息"><a href="#5-1-3-添加数据库连接信息" class="headerlink" title="5.1.3 添加数据库连接信息"></a>5.1.3 添加数据库连接信息</h3><p>在application.properties中添加数据量的连接信息</p>
+<pre><code class="properties">#DB Configuration:
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8
+spring.datasource.username=root
+spring.datasource.password=root
+</code></pre>
+<h3 id="5-1-4-创建user表"><a href="#5-1-4-创建user表" class="headerlink" title="5.1.4 创建user表"></a>5.1.4 创建user表</h3><p>在test数据库中创建user表</p>
+<pre><code class="sql">-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (&#39;1&#39;, &#39;zhangsan&#39;, &#39;123&#39;, &#39;张三&#39;);
+INSERT INTO `user` VALUES (&#39;2&#39;, &#39;lisi&#39;, &#39;123&#39;, &#39;李四&#39;);
+</code></pre>
+<h3 id="5-1-5-创建实体Bean"><a href="#5-1-5-创建实体Bean" class="headerlink" title="5.1.5 创建实体Bean"></a>5.1.5 创建实体Bean</h3><pre><code class="java">public class User {
+    // 主键
+    private Long id;
+    // 用户名
+    private String username;
+    // 密码
+    private String password;
+    // 姓名
+    private String name;
+
+    //此处省略getter和setter方法 .. ..
+
+}
+</code></pre>
+<h3 id="5-1-6-编写Mapper"><a href="#5-1-6-编写Mapper" class="headerlink" title="5.1.6 编写Mapper"></a>5.1.6 编写Mapper</h3><pre><code class="java">@Mapper
+public interface UserMapper {
+    public List&lt;User&gt; queryUserList();
+}
+</code></pre>
+<p>注意：@Mapper标记该类是一个mybatis的mapper接口，可以被spring boot自动扫描到spring上下文中</p>
+<h3 id="5-1-7-配置Mapper映射文件"><a href="#5-1-7-配置Mapper映射文件" class="headerlink" title="5.1.7 配置Mapper映射文件"></a>5.1.7 配置Mapper映射文件</h3><p>在src\main\resources\mapper路径下加入UserMapper.xml配置文件”</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot; &gt;
+&lt;mapper namespace=&quot;com.itheima.mapper.UserMapper&quot;&gt;
+    &lt;select id=&quot;queryUserList&quot; resultType=&quot;user&quot;&gt;
+        select * from user
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<h3 id="5-1-8-在application-properties中添加mybatis的信息"><a href="#5-1-8-在application-properties中添加mybatis的信息" class="headerlink" title="5.1.8 在application.properties中添加mybatis的信息"></a>5.1.8 在application.properties中添加mybatis的信息</h3><pre><code class="properties">#spring集成Mybatis环境
+#pojo别名扫描包
+mybatis.type-aliases-package=com.itheima.domain
+#加载Mybatis映射文件
+mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+</code></pre>
+<h3 id="5-1-9-编写测试Controller"><a href="#5-1-9-编写测试Controller" class="headerlink" title="5.1.9 编写测试Controller"></a>5.1.9 编写测试Controller</h3><pre><code class="java">@Controller
+public class MapperController {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @RequestMapping(&quot;/queryUser&quot;)
+    @ResponseBody
+    public List&lt;User&gt; queryUser(){
+        List&lt;User&gt; users = userMapper.queryUserList();
+        return users;
+    }
+
+}
+</code></pre>
+<h3 id="5-1-10-测试"><a href="#5-1-10-测试" class="headerlink" title="5.1.10 测试"></a>5.1.10 测试</h3><p><img src="img\14.png" alt></p>
+<h2 id="5-2-SpringBoot整合Junit"><a href="#5-2-SpringBoot整合Junit" class="headerlink" title="5.2 SpringBoot整合Junit"></a>5.2 SpringBoot整合Junit</h2><h3 id="5-2-1-添加Junit的起步依赖"><a href="#5-2-1-添加Junit的起步依赖" class="headerlink" title="5.2.1 添加Junit的起步依赖"></a>5.2.1 添加Junit的起步依赖</h3><pre><code class="xml">&lt;!--测试的起步依赖--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-2-2-编写测试类"><a href="#5-2-2-编写测试类" class="headerlink" title="5.2.2 编写测试类"></a>5.2.2 编写测试类</h3><pre><code class="java">package com.itheima.test;
+
+import com.itheima.MySpringBootApplication;
+import com.itheima.domain.User;
+import com.itheima.mapper.UserMapper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = MySpringBootApplication.class)
+public class MapperTest {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    public void test() {
+        List&lt;User&gt; users = userMapper.queryUserList();
+        System.out.println(users);
+    }
+
+}
+</code></pre>
+<p>其中，</p>
+<p>SpringRunner继承自SpringJUnit4ClassRunner，使用哪一个Spring提供的测试测试引擎都可以</p>
+<pre><code class="java">public final class SpringRunner extends SpringJUnit4ClassRunner 
+</code></pre>
+<p>@SpringBootTest的属性指定的是引导类的字节码对象</p>
+<h3 id="5-2-3-控制台打印信息"><a href="#5-2-3-控制台打印信息" class="headerlink" title="5.2.3 控制台打印信息"></a>5.2.3 控制台打印信息</h3><p><img src="img\15.png" alt></p>
+<h2 id="5-3-SpringBoot整合Spring-Data-JPA"><a href="#5-3-SpringBoot整合Spring-Data-JPA" class="headerlink" title="5.3 SpringBoot整合Spring Data JPA"></a>5.3 SpringBoot整合Spring Data JPA</h2><h3 id="5-3-1-添加Spring-Data-JPA的起步依赖"><a href="#5-3-1-添加Spring-Data-JPA的起步依赖" class="headerlink" title="5.3.1 添加Spring Data JPA的起步依赖"></a>5.3.1 添加Spring Data JPA的起步依赖</h3><pre><code class="xml">&lt;!-- springBoot JPA的起步依赖 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-3-2-添加数据库驱动依赖"><a href="#5-3-2-添加数据库驱动依赖" class="headerlink" title="5.3.2 添加数据库驱动依赖"></a>5.3.2 添加数据库驱动依赖</h3><pre><code class="xml">&lt;!-- MySQL连接驱动 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-3-3-在application-properties中配置数据库和jpa的相关属性"><a href="#5-3-3-在application-properties中配置数据库和jpa的相关属性" class="headerlink" title="5.3.3 在application.properties中配置数据库和jpa的相关属性"></a>5.3.3 在application.properties中配置数据库和jpa的相关属性</h3><pre><code class="properties">#DB Configuration:
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8
+spring.datasource.username=root
+spring.datasource.password=root
+
+#JPA Configuration:
+spring.jpa.database=MySQL
+spring.jpa.show-sql=true
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
+</code></pre>
+<h3 id="5-3-4-创建实体配置实体"><a href="#5-3-4-创建实体配置实体" class="headerlink" title="5.3.4 创建实体配置实体"></a>5.3.4 创建实体配置实体</h3><pre><code class="java">@Entity
+public class User {
+    // 主键
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    // 用户名
+    private String username;
+    // 密码
+    private String password;
+    // 姓名
+    private String name;
+
+    //此处省略setter和getter方法... ...
+}
+</code></pre>
+<h3 id="5-3-5-编写UserRepository"><a href="#5-3-5-编写UserRepository" class="headerlink" title="5.3.5 编写UserRepository"></a>5.3.5 编写UserRepository</h3><pre><code class="java">public interface UserRepository extends JpaRepository&lt;User,Long&gt;{
+    public List&lt;User&gt; findAll();
+}
+</code></pre>
+<h3 id="5-3-6-编写测试类"><a href="#5-3-6-编写测试类" class="headerlink" title="5.3.6 编写测试类"></a>5.3.6 编写测试类</h3><pre><code class="java">@RunWith(SpringRunner.class)
+@SpringBootTest(classes=MySpringBootApplication.class)
+public class JpaTest {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Test
+    public void test(){
+        List&lt;User&gt; users = userRepository.findAll();
+        System.out.println(users);
+    }
+
+}
+</code></pre>
+<h3 id="5-3-7-控制台打印信息"><a href="#5-3-7-控制台打印信息" class="headerlink" title="5.3.7 控制台打印信息"></a>5.3.7 控制台打印信息</h3><p><img src="img\16.png" alt></p>
+<p>注意：如果是jdk9，执行报错如下：</p>
+<p><img src="img\17.png" alt></p>
+<p>原因：jdk缺少相应的jar</p>
+<p>解决方案：手动导入对应的maven坐标，如下：</p>
+<pre><code class="xml">&lt;!--jdk9需要导入如下坐标--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+    &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="5-4-SpringBoot整合Redis"><a href="#5-4-SpringBoot整合Redis" class="headerlink" title="5.4 SpringBoot整合Redis"></a>5.4 SpringBoot整合Redis</h2><h3 id="5-4-1-添加redis的起步依赖"><a href="#5-4-1-添加redis的起步依赖" class="headerlink" title="5.4.1 添加redis的起步依赖"></a>5.4.1 添加redis的起步依赖</h3><pre><code class="xml">&lt;!-- 配置使用redis启动器 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="5-4-2-配置redis的连接信息"><a href="#5-4-2-配置redis的连接信息" class="headerlink" title="5.4.2 配置redis的连接信息"></a>5.4.2 配置redis的连接信息</h3><pre><code class="properties">#Redis
+spring.redis.host=127.0.0.1
+spring.redis.port=6379
+</code></pre>
+<h3 id="5-4-3-注入RedisTemplate测试redis操作"><a href="#5-4-3-注入RedisTemplate测试redis操作" class="headerlink" title="5.4.3 注入RedisTemplate测试redis操作"></a>5.4.3 注入RedisTemplate测试redis操作</h3><pre><code class="java">@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SpringbootJpaApplication.class)
+public class RedisTest {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RedisTemplate&lt;String, String&gt; redisTemplate;
+
+    @Test
+    public void test() throws JsonProcessingException {
+        //从redis缓存中获得指定的数据
+        String userListData = redisTemplate.boundValueOps(&quot;user.findAll&quot;).get();
+        //如果redis中没有数据的话
+        if(null==userListData){
+            //查询数据库获得数据
+            List&lt;User&gt; all = userRepository.findAll();
+            //转换成json格式字符串
+            ObjectMapper om = new ObjectMapper();
+            userListData = om.writeValueAsString(all);
+            //将数据存储到redis中，下次在查询直接从redis中获得数据，不用在查询数据库
+            redisTemplate.boundValueOps(&quot;user.findAll&quot;).set(userListData);
+            System.out.println(&quot;===============从数据库获得数据===============&quot;);
+        }else{
+            System.out.println(&quot;===============从redis缓存中获得数据===============&quot;);
+        }
+
+        System.out.println(userListData);
+
+    }
+
+}
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/05/12/Hexo-Theme-Sakura/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%99%9E%E4%B9%A6%E6%AC%A3&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=2191774479,2730402448&os=245242107,852405616&simid=0,0&pn=11&rn=1&di=61080&ln=1581&fr=&fmq=1589521581253_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=11&spn=0&pi=0&gsm=0&objurl=http%3A%2F%2Fpics3.baidu.com%2Ffeed%2F43a7d933c895d143b3df7fc7fd9513045baf0710.jpeg%3Ftoken%3D694d7992b924530aec4ccf3c454ef43e&rpstart=0&rpnum=0&adpicid=0&force=undefined" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%99%9E%E4%B9%A6%E6%AC%A3&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=2191774479,2730402448&os=245242107,852405616&simid=0,0&pn=11&rn=1&di=61080&ln=1581&fr=&fmq=1589521581253_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=11&spn=0&pi=0&gsm=0&objurl=http%3A%2F%2Fpics3.baidu.com%2Ffeed%2F43a7d933c895d143b3df7fc7fd9513045baf0710.jpeg%3Ftoken%3D694d7992b924530aec4ccf3c454ef43e&rpstart=0&rpnum=0&adpicid=0&force=undefined">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Hexo-Theme-Sakura</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "W4o54nMXiANuTNwy7G0UBHja-gzGzoHsz",
+        appKey: "Bxf32o0QPRCCLpYORLCpYwd7",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="hojun.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg" itemprop="image" alt="福尔摩东" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="hojun.cn" itemprop="url" rel="author">福尔摩东</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 福尔摩东<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">福尔摩东的blog</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/zzdnb" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/资源/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/随想/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/转载/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/悦读/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/图集/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
